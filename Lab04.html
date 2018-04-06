@@ -1,20 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-<head >
-   <meta charset="utf-8">
-   <title>Lab 04</title>
-   <link rel="stylesheet" href="./css/reset.css" />
-   <link rel="stylesheet" href="./css/Lab04.css" />
+<head>
+ <meta charset="utf-8">
+ <title>Lab 04</title>
+ <link rel="stylesheet" href="./css/reset.css" />
+ <link rel="stylesheet" href="./css/Lab04.css" />
 </head>
 <body>
 <header>
-     <h1>Share Your Travels</h1>
-     <p>let us know where you've been</p>
+ <h1>Share Your Travels</h1>
+ <p>let us know where you've been</p>
 </header>
 <main>
-   <section>
-   
-   </section>
+ <section>
+  <form method="post" action="http://www.randyconnolly.com/tests/process.php">
+   <fieldset>
+    <legend>PHOTO DETAILS</legend>
+    <table>
+     <tbody>
+      <tr>
+       <td colspan="2">
+        <p for="title">Title</p>
+        <input type="text" id="title" name="title" value="Give your photo a descriptive name">
+        <p for="description">Description</p>
+        <textarea id="description" name="description">Adding a rich description will help with search results</textarea>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        Continent<br/>
+        <select id="continent" name="continent">
+         <option value="choose continent">Choose continent</option>
+         <option value="asia">Asia</option>
+         <option value="america">America</option>
+        </select><br/>
+        Country<br/>
+        <select id="country" name="country">
+         <option value="choose counrty">Choose country</option>
+         <option value="usa">USA</option>
+         <option value="uk">UK</option>
+         <option value="japan">Japan</option>
+        </select><br/>
+        City<br/>
+        <input type="text" id="city" name="city">
+       </td>
+       <td>
+        <div class="box">Copyright?<br/>
+         <input type="radio" id="copyright" name="copyright" value="reserved">All rights reserved<br/>
+         <input type="radio" id="copyright" name="copyright" value="commons">Creative Commons
+        </div>
+        <div class="box">Creative Common Types?<br/>
+         <input type="checkbox" id="cc" name="cc" value="attribution">Attribution<br/>
+         <input type="checkbox" id="cc" name="cc" value="noncommercial">Noncommercial<br/>
+         <input type="checkbox" id="cc" name="cc" value="nonderivative">No Derivative Works
+        </div>
+       </td>
+      </tr>
+      <tr>
+       <td colspan="2">
+        <div class="rectangle">
+         I accept the software license
+         <input type="checkbox" id="accept" name="accept" value="accept">
+        </div>
+       </td>
+      </tr>
+      <tr>
+       <td>
+        <p for="score">Rate this photo:</p>
+        <input type="text" id="score" name="score"><br/>
+        <p for="color">Collor Correction:</p>
+        <input type="color" id="color" name="color"><br/>
+       </td>
+       <td>
+        <div class="box">
+         Date Taken:<br/>
+         <input type="date" id="date" name="date"><br/>
+         Time Taken:<br/>
+         <input type="time" id="time" name="time"><br/>
+        </div>
+       </td>
+      </tr>
+      <tr>
+       <td colspan="2">
+        <div class="rectangle">
+         <input type="submit" id="submit" name="submit" class="rounded" value="Submit">
+         <input type="reset" id="reset" name="reset" class="rounded" value="Reset">
+        </div>
+       </td>
+      </tr>
+     </tbody>
+    </table>
+   </fieldset>
+  </form>
+ </section>
 </main>  
 
 
