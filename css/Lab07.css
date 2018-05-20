@@ -1,0 +1,31 @@
+form
+{
+ text-align:center;
+}
+
+.w300
+{
+ width:300px;
+}
+
+.non
+{
+ display:none;
+}
+
+#tbDown th
+{
+ background-color:grey;
+ color:whitesmoke;
+}
+
+.odd
+{
+ background-color:lightgrey;
+}
+
+*
+{
+ margin-left:auto;
+ margin-right:auto;
+}
