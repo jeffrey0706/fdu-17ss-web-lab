@@ -18,7 +18,7 @@ function outputPostRow($number)  {
     $title;
     $excerpt;
     $reviewsNum;
-    $reviewsRating = 3;
+    $reviewsRating;
     switch($number) {
         case 1:
             $postId = $postId1;
