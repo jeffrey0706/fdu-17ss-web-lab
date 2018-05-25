@@ -37,13 +37,15 @@ include 'travel-data.inc.php';
         <div class="btn-group countryButtons" role="group" aria-label="...">
               <a role="button" class="btn btn-default" href="list.php">All</a>
            
-              <?php   
-              /* you will need to fill this place with appropriate PHP */
-              /* hint: use array and loop */
-              //the next line is an example
-              //<a href="list.php?country=Canada" role="button" class="btn btn-default"> Canada</a> 
-
-
+              <?php  sort($countries);
+                     for($i=0; $i<count($countries); $i++) {
+                       $temp = '<a href="list.php?country=';
+                       $temp .= $countries[$i];
+                       $temp .= '" role="button" class="btn btn-default"> ';
+                       $temp .= $countries[$i];
+                       $temp .= '</a>';
+                       echo $temp;
+                     }
               ?>
                      
         </div>               
@@ -52,25 +54,24 @@ include 'travel-data.inc.php';
 
 		<ul class="caption-style-2">
          
-          <?php   
-          /* you will need to fill this place with appropriate PHP */ 
-          /* hint: use array and loop */
-          //the next lines are one of the elements
-          //you need to fill the elements with data provided
-
-
-   //        <li>
-   //              <a href="detail.php?id=22" class="img-responsive">
-   //              	<img src="images/square/6114850721.jpg" alt="View of Cologne">
-   //              	<div class="caption">
-   //              		<div class="blur">
-   //              		</div>
-   //              		<div class="caption-text">
-   //              			<h1>View of Cologne</h1>
-   //              		</div>
-   //              	</div>
-   //              </a>
-			// </li>
+          <?php  foreach($images as $x) {
+                   $data = array();
+                   $i = 0;
+                   foreach($x as $y => $y_value) {
+                     $data[$i] = $y_value;
+                     $i++;
+                   }
+                   $temp = '<li><a href="detail.php?id=';
+                   $temp .= $data[0];
+                   $temp .= '" class="img-responsive"><img src="images/square/';
+                   $temp .= $data[6];
+                   $temp .= '" alt="';
+                   $temp .= $data[1];
+                   $temp .= '"><div class="caption"><div class="blur"></div><div class="caption-text"><h1>';
+                   $temp .= $data[1];
+                   $temp .= '</h1></div></div></a></li>';
+                   echo $temp;
+                }
           ?>
 
        </ul>       
