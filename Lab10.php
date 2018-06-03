@@ -1,5 +1,5 @@
 <?php
-//Fill this place
+$mysqli = new mysqli('localhost', 'root', '', 'travel');
 
 //****** Hint ******
 //connect database and fetch data here
@@ -42,7 +42,7 @@
               <select name="continent" class="form-control">
                 <option value="0">Select Continent</option>
                 <?php
-                //Fill this place
+                $result = $mysqli -> query('SELECT * FROM Continents');
 
                 //****** Hint ******
                 //display the list of continents
@@ -57,10 +57,15 @@
               <select name="country" class="form-control">
                 <option value="0">Select Country</option>
                 <?php 
-                //Fill this place
+                $result = $mysqli -> query('SELECT * FROM Countries');
 
                 //****** Hint ******
                 /* display list of countries */ 
+
+                while($row = $result->fetch_assoc()) {
+                  echo '<option value=' . $row['ISO'] . '>' . $row['CountryName'] . '</option>';
+                }
+
                 ?>
               </select>    
               <input type="text"  placeholder="Search title" class="form-control" name=title>
@@ -74,22 +79,36 @@
 
 		<ul class="caption-style-2">
             <?php 
-            //Fill this place
+            $result;
+            $result = $mysqli -> query('SELECT * FROM ImageDetails');
+            if(isset($_GET['continent'])) {
+              $continent = $_GET['continent'];
+              $country = $_GET['country'];
+              if($continent == '0' && $country == '0') {}
+              else if($continent == '0')
+                $result = $mysqli -> query('SELECT * FROM ImageDetails WHERE CountryCodeISO = "' . $country . '"');
+              else if($country == '0')
+                $result = $mysqli -> query('SELECT * FROM ImageDetails WHERE ContinentCode = "' . $continent . '"');
+              else
+                $result = $mysqli -> query('SELECT * FROM ImageDetails WHERE ContinentCode = "' . $continent . '" AND CountryCodeISO = "' . $country . '"');
+            }
 
             //****** Hint ******
-            /* use while loop to display images that meet requirements ... sample below ... replace ???? with field data
-            <li>
-              <a href="detail.php?id=????" class="img-responsive">
-                <img src="images/square-medium/????" alt="????">
-                <div class="caption">
-                  <div class="blur"></div>
-                  <div class="caption-text">
-                    <p>????</p>
-                  </div>
-                </div>
-              </a>
-            </li>        
-            */ 
+            /* use while loop to display images that meet requirements ... sample below ... replace ???? with field data */ 
+
+            while($row = $result->fetch_assoc()) {
+              $temp = '<li><a href="detail.php?id=';
+              $temp .= $row['ImageID'];
+              $temp .= '" class="img-responsive"><img src="images/square-medium/';
+              $temp .= $row['Path'];
+              $temp .= '" alt="';
+              $temp .= $row['Title'];
+              $temp .= '"><div class="caption"><div class="blur"></div><div class="caption-text"><p>';
+              $temp .= $row['Description'];
+              $temp .= '</p></div></div></a></li>';
+              echo $temp;
+            }
+
             ?>
        </ul>       
 
